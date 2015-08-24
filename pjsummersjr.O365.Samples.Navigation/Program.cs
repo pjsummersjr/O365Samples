@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Security;
 
 using Microsoft.SharePoint.Client;
@@ -9,9 +10,9 @@ namespace pjsummersjr.O365.Samples.Navigation
     {
         static void Main(string[] args)
         {
-            string username = "admin@paulsumm0715.onmicrosoft.com";
-            string password = "pass@word1";
-            string siteUrl = "https://paulsumm0715.sharepoint.com/sites/llbean";
+            string username = ConfigurationManager.AppSettings["O365User"];
+            string password = ConfigurationManager.AppSettings["O365Password"];
+            string siteUrl = ConfigurationManager.AppSettings["O365Site"];
 
             NavigationManager navMan = new NavigationManager(siteUrl, username, GetStringAsSecureString(password));
 
